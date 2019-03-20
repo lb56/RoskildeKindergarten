@@ -56,7 +56,7 @@ public class KindergartenSystem {
                             out.println(child);
                             // Calling the constructor of TelephoneList
                             TelephoneList tlfList = new TelephoneList(parent1, parent2, phone1, phone2, childName);
-                            telephoneList.println(tlfList);
+                            telephoneList.println(tlfList)
                             break;
                     }
             }

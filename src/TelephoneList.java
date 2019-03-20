@@ -9,7 +9,7 @@ public class TelephoneList {
     public TelephoneList(String parent1Name, String parent2Name, String primaryPhone, String secondaryPhone, String childName){
         this.parent1Name = parent1Name;
         this.parent2Name = parent2Name;
-        this.primaryPhone = primaryPhone;
+        this.primaryPhone = primaryPhone
         this.secondaryPhone = secondaryPhone;
         this.childName = childName;
     }
