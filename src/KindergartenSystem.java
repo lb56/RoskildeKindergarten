@@ -11,6 +11,7 @@ public class KindergartenSystem {
     public void systemRun() throws IOException {
         // Make a printstream object to write text to a file called "children.txt"
         PrintStream out = new PrintStream(new FileOutputStream("children.txt", true));
+        PrintStream telephoneList = new PrintStream(new FileOutputStream("telephone list.txt", true));
         boolean running = true;
         // While loop, so that the program runs until the user stops it manually with "case 0"
         while (running) {
@@ -53,6 +54,9 @@ public class KindergartenSystem {
                             Child child = new Child(childName, dateOfBirth, age, parent1, parent2, address, phone1, phone2);
                             // Writing the input by the user to the text file "children.txt"
                             out.println(child);
+                            // Calling the constructor of TelephoneList
+                            TelephoneList tlfList = new TelephoneList(parent1, parent2, phone1, phone2, childName);
+                            telephoneList.println(tlfList);
                             break;
                     }
             }
