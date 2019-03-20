@@ -26,8 +26,8 @@ public class KindergartenSystem {
                 // Manager login
                 case 1:
                     System.out.println("Vælg hvad du vil gøre:");
-                    System.out.println("1. Indskriv et barn.");
-                    System.out.println("0. Luk programmet.");
+                    System.out.println("1: Indskriv et barn.");
+                    System.out.println("0: Luk programmet.");
                     int adminInput = iConsole.nextInt();
                     switch (adminInput) {
                         // Enrollment
@@ -51,14 +51,38 @@ public class KindergartenSystem {
                             System.out.println("Indtast forældres sekundære tlf. nummer:");
                             String phone2 = sConsole.nextLine();
                             // Calling the constructor of Child
-                            Child child = new Child(childName, dateOfBirth, age, parent1, parent2, address, phone1, phone2);
+                            Child child = new Child(childName + " | " , dateOfBirth + " | " , age , " | " + parent1 + " | " , parent2 + " | " , address + " | " , phone1 + " | " , phone2 + " | " );
                             // Writing the input by the user to the text file "children.txt"
                             out.println(child);
                             // Calling the constructor of TelephoneList
-                            TelephoneList tlfList = new TelephoneList(parent1, parent2, phone1, phone2, childName);
+                            TelephoneList tlfList = new TelephoneList(parent1 + " | " , parent2 + " | " , phone1 + " | " , phone2 + " | ", childName);
                             telephoneList.println(tlfList);
                             break;
                     }
+                // Medarbejder Login
+                case 2:
+                    System.out.println("Vælg hvad du vil gøre");
+                    System.out.println("1: Udvælg et barn, og se dets oplysninger");
+                    System.out.println("2: Se telefon listen");
+                    System.out.println("0: Luk Programmet");
+                    int staffInput = iConsole.nextInt();
+                    switch (staffInput) {
+                        case 1:
+
+                            break;
+
+                        case 2:
+                            System.out.println("Forældre 1 | Forældre 2 | Telefon 1 | Telefon 2 | Barns Navn");
+                            System.out.println(telephoneList.toString());
+                            break;
+
+                        case 0:
+                            running = false;
+                    }
+
+                // Shuts down the program
+                case 0:
+                    running = false;
             }
         }
     }
