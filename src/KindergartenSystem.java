@@ -56,8 +56,10 @@ public class KindergartenSystem {
                             out.println(child);
                             // Calling the constructor of TelephoneList
                             TelephoneList tlfList = new TelephoneList(parent1 + " | " , parent2 + " | " , phone1 + " | " , phone2 + " | ", childName);
+                            // Writing the input by the user to the text file "telephone list.txt"
                             telephoneList.println(tlfList);
-                            break;
+                            System.out.println("Barn Indskrevet");
+                            System.out.println("");
                     }
                 // Medarbejder Login
                 case 2:
@@ -68,13 +70,16 @@ public class KindergartenSystem {
                     int staffInput = iConsole.nextInt();
                     switch (staffInput) {
                         case 1:
+                            System.out.println("Vælg et barn fra listen");
+                            //UDSKRIV LISTE AF ALLE BØRNENAVNE HER
+                            System.out.println("<BARN Valgt> her er alle dets oplysninger");
+                            //UDSKRIV BARNETS OPLYSNINGER HER
 
-                            break;
 
                         case 2:
                             System.out.println("Forældre 1 | Forældre 2 | Telefon 1 | Telefon 2 | Barns Navn");
-                            System.out.println(telephoneList.toString());
-                            break;
+                            //UDSKRIV TELEFON LISTEN HER
+
 
                         case 0:
                             running = false;
