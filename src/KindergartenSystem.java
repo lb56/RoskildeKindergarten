@@ -12,7 +12,7 @@ public class KindergartenSystem {
         PrintStream telephoneList = new PrintStream(new FileOutputStream("telephone list.txt", true));
         FileReader fr = new FileReader("telephone list.txt");
         BufferedReader br = new BufferedReader(fr);
-        String line = null;
+        String tlfUdskriv = null;
         boolean running = true;
         // While loop, so that the program runs until the user stops it manually with "case 0"
         while (running) {
@@ -52,52 +52,57 @@ public class KindergartenSystem {
                         while (login) {
                             System.out.println("Vælg hvad du vil gøre:");
                             System.out.println("1: Indskriv et barn.");
-                            System.out.println("0: Luk programmet.");
+                            System.out.println("0: Log ud.");
                             int adminInput = iConsole.nextInt();
-                            sConsole.nextLine();
-                            switch (adminInput) {
-                                // Enrollment
-                                case 1:
-                                    System.out.println("Indtast navnet på barnet:");
-                                    String childName = sConsole.nextLine();
-                                    System.out.println("Indtast fødselsdatoen for barnet med formatet (Dag/Måned/År):");
-                                    String dateOfBirth = sConsole.nextLine();
-                                    System.out.println("Indtast alderen på barnet:");
-                                    int age = iConsole.nextInt();
-                                    System.out.println("Indtast første forælders navn:");
-                                    String parent1 = sConsole.nextLine();
-                                    System.out.println("Indtast første forældres Hjemme tlf nr.");
-                                    String parent1Prim = sConsole.nextLine();
-                                    System.out.println("Indtast første forældres Arbejds tlf nr.");
-                                    String parent1Sec = sConsole.nextLine();
-                                    System.out.println("Indtast anden forælders navn:");
-                                    String parent2 = sConsole.nextLine();
-                                    System.out.println("Indtast anden forældres Hjemme tlf nr.");
-                                    String parent2Prim = sConsole.nextLine();
-                                    System.out.println("Indtast anden forældres Arbejde tlf nr.");
-                                    String parent2Sec = sConsole.nextLine();
-                                    System.out.println("Indtast forældres adresse:");
-                                    String address = sConsole.nextLine();
-                                    System.out.println("Indtast forældres E-mail:");
-                                    String email = sConsole.nextLine();
-                                    // Calling the constructor of Child
-                                    Child child = new Child(childName + " | ", dateOfBirth + " | ", age, " | " + parent1 + " | ", parent1Prim + " | ", parent1Sec + " | ", parent2 + " | ", parent2Prim + " | ", parent2Sec + " | ",  address +" | ",  email + " | ");
-                                    // Writing the input by the user to the text file "children.txt"
-                                    out.println(child);
-                                    // Calling the constructor of TelephoneList
-                                    TelephoneList tlfList = new TelephoneList(childName + " | ", parent1 + " | ", parent1Prim + " | ", parent1Sec + " | ", parent2 + " | ",  parent2Prim+ " | ",  parent2Sec+ " | ");
-                                    // Writing the input by the user to the text file "telephone list.txt"
-                                    telephoneList.println(tlfList);
-                                    System.out.println("Barn Indskrevet");
-                                    System.out.println();
+                                boolean adminWhile = true;
+                                while(adminWhile) {
+                                    switch (adminInput) {
+                                    // Enrollment
+                                    case 1:
+                                        System.out.println("Indtast navnet på barnet:");
+                                        String childName = sConsole.nextLine();
+                                        System.out.println("Indtast fødselsdatoen for barnet med formatet (Dag/Måned/År):");
+                                        String dateOfBirth = sConsole.nextLine();
+                                        System.out.println("Indtast alderen på barnet:");
+                                        int age = iConsole.nextInt();
+                                        System.out.println("Indtast første forælders navn:");
+                                        String parent1 = sConsole.nextLine();
+                                        System.out.println("Indtast " + parent1 + "'s Hjemme tlf nr.");
+                                        String parent1Prim = sConsole.nextLine();
+                                        System.out.println("Indtast " + parent1 + "'s Arbejds tlf nr.");
+                                        String parent1Sec = sConsole.nextLine();
+                                        System.out.println("Indtast anden forælders navn:");
+                                        String parent2 = sConsole.nextLine();
+                                        System.out.println("Indtast " + parent2 + "' Hjemme tlf nr.");
+                                        String parent2Prim = sConsole.nextLine();
+                                        System.out.println("Indtast " + parent2 + "' Arbejde tlf nr.");
+                                        String parent2Sec = sConsole.nextLine();
+                                        System.out.println("Indtast forældres adresse:");
+                                        String address = sConsole.nextLine();
+                                        System.out.println("Indtast forældres E-mail:");
+                                        String email = sConsole.nextLine();
+                                        // Calling the constructor of Child
+                                        Child child = new Child(childName + " | ", dateOfBirth + " | ", age, " | " + parent1 + " | ", parent1Prim + " | ", parent1Sec + " | ", parent2 + " | ", parent2Prim + " | ", parent2Sec + " | ", address + " | ", email + " | ");
+                                        // Writing the input by the user to the text file "children.txt"
+                                        out.println(child);
+                                        // Calling the constructor of TelephoneList
+                                        TelephoneList tlfList = new TelephoneList(childName + " | ", parent1 + " | ", parent1Prim + " | ", parent1Sec + " | ", parent2 + " | ", parent2Prim + " | ", parent2Sec + " | ");
+                                        // Writing the input by the user to the text file "telephone list.txt"
+                                        telephoneList.println(tlfList);
+                                        System.out.println("Barn Indskrevet");
+                                        System.out.println();
 
-                                case 0:
-                                    login = false;
+                                    case 0:
+                                        adminWhile = false;
+                                        login = false;
+                                }
                             }
                         }
                     }
                 //Medarbejder Login
                 case 2:
+                    boolean medarbejder = true;
+                    while(medarbejder){
                     System.out.println("Vælg hvad du vil gøre");
                     System.out.println("1: Udvælg et barn, og se dets oplysninger");
                     System.out.println("2: Se telefon listen");
@@ -106,25 +111,26 @@ public class KindergartenSystem {
                     switch (staffInput) {
                         case 1:
                             System.out.println("Vælg et barn fra listen");
-                            //UDSKRIV LISTE AF ALLE BØRNENAVNE HER
+                            //UDSKRIV LISTE AF ALLE BØRNENAVNE HER + FØDSELSDATO
                             System.out.println("<BARN Valgt> her er alle dets oplysninger");
                             //UDSKRIV BARNETS OPLYSNINGER HER
 
 
                         case 2:
                             System.out.println("Barns Navn | Forældre 1 | Hjemme Tlf | Arbejds tlf | Forældre 2 | Hjemme tlf 1 | Arbejds tlf");
-                            while((line = br.readLine()) != null){
-                                System.out.println(line);
-                        }
+                            while ((tlfUdskriv = br.readLine()) != null) {
+                                System.out.println(tlfUdskriv);
+                            }
 
 
                         case 0:
-                            running = false;
+                            medarbejder = false;
                     }
-
+                    }
                     // Shuts down the program
                 case 0:
-                    running = false;}
+                    running = false;
+            }
         }
     }
 }
