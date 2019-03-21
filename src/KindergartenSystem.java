@@ -69,27 +69,70 @@ public class KindergartenSystem {
                                     case 1:
                                         System.out.println("Indtast navnet på barnet:");
                                         String childName = sConsole.nextLine();
+                                        if (childName.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast fødselsdatoen for barnet med formatet (Dag/Måned/År):");
                                         String dateOfBirth = sConsole.nextLine();
+                                        if (dateOfBirth.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast alderen på barnet:");
-                                        int age = sConsole.nextInt();
-                                        sConsole.nextLine();
+                                        String age = sConsole.nextLine();
+                                        if (age.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast første forælders navn:");
                                         String parent1 = sConsole.nextLine();
+                                        if (parent1.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast " + parent1 + "'s Hjemme tlf nr.");
                                         String parent1Prim = sConsole.nextLine();
+                                        if (parent1Prim.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast " + parent1 + "'s Arbejds tlf nr.");
                                         String parent1Sec = sConsole.nextLine();
+                                        if (parent1Sec.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast anden forælders navn:");
                                         String parent2 = sConsole.nextLine();
+                                        if (parent2.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast " + parent2 + "'s Hjemme tlf nr.");
                                         String parent2Prim = sConsole.nextLine();
+                                        if (parent2Prim.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast " + parent2 + "'s Arbejde tlf nr.");
                                         String parent2Sec = sConsole.nextLine();
+                                        if (parent2Sec.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast forældres adresse:");
                                         String address = sConsole.nextLine();
+                                        if (address.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         System.out.println("Indtast forældres E-mail:");
                                         String email = sConsole.nextLine();
+                                        if (email.equalsIgnoreCase("Annuller")){
+                                            adminWhile = false;
+                                            break;
+                                        }
                                         // Calling the constructor of Child
                                         Child child = new Child(childName + " | ", dateOfBirth + " | ", age, " | " + parent1 + " | ", parent1Prim + " | ", parent1Sec + " | ", parent2 + " | ", parent2Prim + " | ", parent2Sec + " | ", address + " | ", email + " | ");
                                         // Writing the input by the user to the text file "children.txt"
@@ -99,7 +142,10 @@ public class KindergartenSystem {
                                         // Writing the input by the user to the text file "telephone list.txt"
                                         telephoneList.println(tlfList);
                                         System.out.println("Barn Indskrevet");
+                                        Thread.sleep(500);
                                         System.out.println();
+                                        adminWhile = false;
+                                        continue;
 
                                     case 0:
                                         adminWhile = false;

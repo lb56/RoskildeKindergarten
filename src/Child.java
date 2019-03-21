@@ -2,7 +2,7 @@ public class Child {
 
     private String childName;
     private String dateOfBirth;
-    private int age;
+    private String age;
     private String parent1Name;
     private String parent1Prim;
     private String parent1Sec;
@@ -12,7 +12,7 @@ public class Child {
     private String address;
     private String email;
 
-    public Child(String childName, String dateOfBirth, int age, String parent1Name, String parent1Prim, String parent1Sec, String parent2Name, String parent2Prim, String parent2Sec, String address, String email) {
+    public Child(String childName, String dateOfBirth, String age, String parent1Name, String parent1Prim, String parent1Sec, String parent2Name, String parent2Prim, String parent2Sec, String address, String email) {
         this.childName = childName;
         this.dateOfBirth = dateOfBirth;
         this.age = age;
