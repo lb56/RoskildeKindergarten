@@ -66,6 +66,8 @@ public class KindergartenSystem {
                         while (login) {
                             System.out.println("Vælg hvad du vil gøre:");
                             System.out.println("1: Indskriv et barn.");
+                            System.out.println("2: Se børns oplysninger");
+                            System.out.println("3: Se telefonlisten");
                             System.out.println("0: Log ud.");
                             int adminInput = sConsole.nextInt();
                             sConsole.nextLine();
@@ -158,6 +160,20 @@ public class KindergartenSystem {
                                         adminWhile = false;
                                         continue;
 
+                                    case 2:
+                                        System.out.println("Barns Navn | Alder | Adresse | Fødselsdato | Email | Telefon");
+                                        while ((childUdskriv = br2.readLine()) != null) {
+                                            System.out.println(childUdskriv);
+                                            System.out.println("");
+                                        }continue;
+
+                                    case 3:
+                                        System.out.println("Barns Navn | Forældre 1 | Hjemme Tlf | Arbejds tlf | Forældre 2 | Hjemme tlf 1 | Arbejds tlf");
+                                        while ((tlfUdskriv = br1.readLine()) != null) {
+                                            System.out.println(tlfUdskriv);
+                                            System.out.println("");
+                                        }continue;
+
                                     case 0:
                                         adminWhile = false;
                                         login = false;
@@ -170,7 +186,7 @@ public class KindergartenSystem {
                     boolean medarbejder = true;
                     while (medarbejder) {
                         System.out.println("Vælg hvad du vil gøre");
-                        System.out.println("1: Udvælg et barn, og se dets oplysninger");
+                        System.out.println("1: Se børns oplysninger");
                         System.out.println("2: Se telefon listen");
                         System.out.println("0: Log ud");
                         int staffInput = sConsole.nextInt();
