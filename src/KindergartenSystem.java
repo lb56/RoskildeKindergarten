@@ -4,9 +4,8 @@ import java.util.Scanner;
 public class KindergartenSystem {
     // Make scanner objects
     Scanner sConsole = new Scanner(System.in);
-    Scanner iConsole = new Scanner(System.in);
 
-    public void systemRun() throws IOException {
+    public void systemRun() throws Exception {
         // Make a printstream object to write text to a file called "children.txt"
         PrintStream out = new PrintStream(new FileOutputStream("children.txt", true));
         PrintStream telephoneList = new PrintStream(new FileOutputStream("telephone list.txt", true));
@@ -22,7 +21,7 @@ public class KindergartenSystem {
             System.out.println("1: Bestyrer");
             System.out.println("2: Medarbejder");
             System.out.println("0: Luk programmet");
-            int input = iConsole.nextInt();
+            int input = sConsole.nextInt();
             switch (input) {
                 // Manager login
                 case 1:
@@ -43,7 +42,15 @@ public class KindergartenSystem {
                                 System.out.println("Forkert login informationer, prøv igen.");
                                 // Hvis n == 2, 3 forsøg er blevet brugt(n starter ved 0) og skulle stoppe programmet.
                                 if (n >= 2) { // can also say if(n==2)
-                                    System.out.println("Du har brugt 3 loginforsøg. Går ud af programmet");
+                                    System.out.print("Du har brugt 3 loginforsøg. Logger ud ");
+                                    Thread.sleep(1000);
+                                    System.out.print(".");
+                                    Thread.sleep(1000);
+                                    System.out.print(".");
+                                    Thread.sleep(1000);
+                                    System.out.println(".");
+                                    Thread.sleep(1000);
+                                    System.out.println("");
                                     login = false;
                                     break;
                                 }
@@ -53,10 +60,11 @@ public class KindergartenSystem {
                             System.out.println("Vælg hvad du vil gøre:");
                             System.out.println("1: Indskriv et barn.");
                             System.out.println("0: Log ud.");
-                            int adminInput = iConsole.nextInt();
-                                boolean adminWhile = true;
-                                while(adminWhile) {
-                                    switch (adminInput) {
+                            int adminInput = sConsole.nextInt();
+                            sConsole.nextLine();
+                            boolean adminWhile = true;
+                            while (adminWhile) {
+                                switch (adminInput) {
                                     // Enrollment
                                     case 1:
                                         System.out.println("Indtast navnet på barnet:");
@@ -64,7 +72,8 @@ public class KindergartenSystem {
                                         System.out.println("Indtast fødselsdatoen for barnet med formatet (Dag/Måned/År):");
                                         String dateOfBirth = sConsole.nextLine();
                                         System.out.println("Indtast alderen på barnet:");
-                                        int age = iConsole.nextInt();
+                                        int age = sConsole.nextInt();
+                                        sConsole.nextLine();
                                         System.out.println("Indtast første forælders navn:");
                                         String parent1 = sConsole.nextLine();
                                         System.out.println("Indtast " + parent1 + "'s Hjemme tlf nr.");
@@ -73,9 +82,9 @@ public class KindergartenSystem {
                                         String parent1Sec = sConsole.nextLine();
                                         System.out.println("Indtast anden forælders navn:");
                                         String parent2 = sConsole.nextLine();
-                                        System.out.println("Indtast " + parent2 + "' Hjemme tlf nr.");
+                                        System.out.println("Indtast " + parent2 + "'s Hjemme tlf nr.");
                                         String parent2Prim = sConsole.nextLine();
-                                        System.out.println("Indtast " + parent2 + "' Arbejde tlf nr.");
+                                        System.out.println("Indtast " + parent2 + "'s Arbejde tlf nr.");
                                         String parent2Sec = sConsole.nextLine();
                                         System.out.println("Indtast forældres adresse:");
                                         String address = sConsole.nextLine();
@@ -98,39 +107,43 @@ public class KindergartenSystem {
                                 }
                             }
                         }
-                    }
-                //Medarbejder Login
+                    }continue;
+                    //Medarbejder Login
                 case 2:
                     boolean medarbejder = true;
-                    while(medarbejder){
-                    System.out.println("Vælg hvad du vil gøre");
-                    System.out.println("1: Udvælg et barn, og se dets oplysninger");
-                    System.out.println("2: Se telefon listen");
-                    System.out.println("0: Luk Programmet");
-                    int staffInput = iConsole.nextInt();
-                    switch (staffInput) {
-                        case 1:
-                            System.out.println("Vælg et barn fra listen");
-                            //UDSKRIV LISTE AF ALLE BØRNENAVNE HER + FØDSELSDATO
-                            System.out.println("<BARN Valgt> her er alle dets oplysninger");
-                            //UDSKRIV BARNETS OPLYSNINGER HER
+                    while (medarbejder) {
+                        System.out.println("Vælg hvad du vil gøre");
+                        System.out.println("1: Udvælg et barn, og se dets oplysninger");
+                        System.out.println("2: Se telefon listen");
+                        System.out.println("0: Log ud");
+                        int staffInput = sConsole.nextInt();
+                        switch (staffInput) {
+                            case 1:
+                                System.out.println("Vælg et barn fra listen");
+                                //UDSKRIV LISTE AF ALLE BØRNENAVNE HER + FØDSELSDATO
+                                System.out.println("<BARN Valgt> her er alle dets oplysninger");
+                                //UDSKRIV BARNETS OPLYSNINGER HER
+                                System.out.println("");
+                                continue;
 
 
-                        case 2:
-                            System.out.println("Barns Navn | Forældre 1 | Hjemme Tlf | Arbejds tlf | Forældre 2 | Hjemme tlf 1 | Arbejds tlf");
-                            while ((tlfUdskriv = br.readLine()) != null) {
-                                System.out.println(tlfUdskriv);
-                            }
+                            case 2:
+                                System.out.println("Barns Navn | Forældre 1 | Hjemme Tlf | Arbejds tlf | Forældre 2 | Hjemme tlf 1 | Arbejds tlf");
+                                while ((tlfUdskriv = br.readLine()) != null) {
+                                    System.out.println(tlfUdskriv);
+                                    System.out.println("");
+                                }continue;
 
 
-                        case 0:
-                            medarbejder = false;
+                            case 0:
+                                medarbejder = false;
+                                break;
+                        }
                     }
-                    }
+                    continue;
                     // Shuts down the program
                 case 0:
-                    running = false;
-            }
+            running = false;}
         }
     }
 }
