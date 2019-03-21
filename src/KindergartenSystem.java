@@ -9,10 +9,17 @@ public class KindergartenSystem {
         // Make a printstream object to write text to a file called "children.txt"
         PrintStream out = new PrintStream(new FileOutputStream("children.txt", true));
         PrintStream telephoneList = new PrintStream(new FileOutputStream("telephone list.txt", true));
-        FileReader fr = new FileReader("telephone list.txt");
-        BufferedReader br = new BufferedReader(fr);
+        FileReader fr1 = new FileReader("telephone list.txt");
+        BufferedReader br1 = new BufferedReader(fr1);
+        PrintStream childList = new PrintStream(new FileOutputStream("Børne Liste.txt", true));
+        FileReader fr2 = new FileReader("Børne Liste.txt");
+        BufferedReader br2 = new BufferedReader(fr2);
+
+
+        String childUdskriv = null;
         String tlfUdskriv = null;
         boolean running = true;
+
         // While loop, so that the program runs until the user stops it manually with "case 0"
         while (running) {
             // Welcome message and start menu;
@@ -141,6 +148,10 @@ public class KindergartenSystem {
                                         TelephoneList tlfList = new TelephoneList(childName + " | ", parent1 + " | ", parent1Prim + " | ", parent1Sec + " | ", parent2 + " | ", parent2Prim + " | ", parent2Sec + " | ");
                                         // Writing the input by the user to the text file "telephone list.txt"
                                         telephoneList.println(tlfList);
+                                        // Calling the constructor of childList
+                                        childList chiList = new childList(childName + " | ", age + " | ", address + " | ", dateOfBirth + " | ", email + " | ", parent1Prim + " | ");
+                                        // Writing the input by the user to the text file "Børne Liste.txt"
+                                        childList.println(chiList);
                                         System.out.println("Barn Indskrevet");
                                         Thread.sleep(500);
                                         System.out.println();
@@ -165,17 +176,16 @@ public class KindergartenSystem {
                         int staffInput = sConsole.nextInt();
                         switch (staffInput) {
                             case 1:
-                                System.out.println("Vælg et barn fra listen");
-                                //UDSKRIV LISTE AF ALLE BØRNENAVNE HER + FØDSELSDATO
-                                System.out.println("<BARN Valgt> her er alle dets oplysninger");
-                                //UDSKRIV BARNETS OPLYSNINGER HER
-                                System.out.println("");
-                                continue;
+                                System.out.println("Barns Navn | Alder | Adresse | Fødselsdato | Email | Telefon");
+                                while ((childUdskriv = br2.readLine()) != null) {
+                                    System.out.println(childUdskriv);
+                                    System.out.println("");
+                                }continue;
 
 
                             case 2:
                                 System.out.println("Barns Navn | Forældre 1 | Hjemme Tlf | Arbejds tlf | Forældre 2 | Hjemme tlf 1 | Arbejds tlf");
-                                while ((tlfUdskriv = br.readLine()) != null) {
+                                while ((tlfUdskriv = br1.readLine()) != null) {
                                     System.out.println(tlfUdskriv);
                                     System.out.println("");
                                 }continue;
