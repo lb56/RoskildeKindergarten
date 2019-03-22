@@ -48,7 +48,7 @@ public class KindergartenSystem {
                                 System.out.println();
                                 System.out.println("Forkert login informationer, prøv igen.");
                                 // Hvis n == 2, 3 forsøg er blevet brugt(n starter ved 0) og skulle stoppe programmet.
-                                if (n >= 2) { // can also say if(n==2)
+                                if (n >= 2) { // kan også bruge(n==2)
                                     System.out.print("Du har brugt 3 loginforsøg. Logger ud ");
                                     Thread.sleep(1000);
                                     System.out.print(".");
@@ -162,17 +162,15 @@ public class KindergartenSystem {
 
                                     case 2:
                                         System.out.println("Barns Navn | Alder | Adresse | Fødselsdato | Email | Telefon");
-                                        while ((childUdskriv = br2.readLine()) != null) {
-                                            System.out.println(childUdskriv);
-                                            System.out.println("");
-                                        }continue;
+                                        readChild();
+                                        adminWhile = false;
+                                        continue;
 
                                     case 3:
                                         System.out.println("Barns Navn | Forældre 1 | Hjemme Tlf | Arbejds tlf | Forældre 2 | Hjemme tlf 1 | Arbejds tlf");
-                                        while ((tlfUdskriv = br1.readLine()) != null) {
-                                            System.out.println(tlfUdskriv);
-                                            System.out.println("");
-                                        }continue;
+                                        readTelephone();
+                                        adminWhile = false;
+                                        continue;
 
                                     case 0:
                                         adminWhile = false;
@@ -193,19 +191,14 @@ public class KindergartenSystem {
                         switch (staffInput) {
                             case 1:
                                 System.out.println("Barns Navn | Alder | Adresse | Fødselsdato | Email | Telefon");
-                                while ((childUdskriv = br2.readLine()) != null) {
-                                    System.out.println(childUdskriv);
-                                    System.out.println("");
-                                }continue;
+                                readChild();
+                                continue;
 
 
                             case 2:
                                 System.out.println("Barns Navn | Forældre 1 | Hjemme Tlf | Arbejds tlf | Forældre 2 | Hjemme tlf 1 | Arbejds tlf");
-                                while ((tlfUdskriv = br1.readLine()) != null) {
-                                    System.out.println(tlfUdskriv);
-                                    System.out.println("");
-                                }continue;
-
+                                readTelephone();
+                                continue;
 
                             case 0:
                                 medarbejder = false;
@@ -218,4 +211,27 @@ public class KindergartenSystem {
             running = false;}
         }
     }
+
+    public void readChild()throws Exception{
+        String childUdskriv = null;
+
+        FileReader fr2 = new FileReader("Børne Liste.txt");
+        BufferedReader br2 = new BufferedReader(fr2);
+        while ((childUdskriv = br2.readLine()) != null) {
+            System.out.println(childUdskriv);
+            System.out.println("");
+        }
+    }
+
+    public void readTelephone()throws Exception{
+        String tlfUdskriv = null;
+        FileReader fr1 = new FileReader("telephone list.txt");
+        BufferedReader br1 = new BufferedReader(fr1);
+        while ((tlfUdskriv = br1.readLine()) != null) {
+            System.out.println(tlfUdskriv);
+            System.out.println("");
+        }
+    }
+
+
 }
