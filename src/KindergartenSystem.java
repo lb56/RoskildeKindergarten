@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 public class KindergartenSystem {
     // Make scanner objects
-    Scanner sConsole = new Scanner(System.in);
+    private Scanner sConsole = new Scanner(System.in);
 
     public void systemRun() throws Exception {
         // Make a printstream object to write text to a file called "children.txt"
