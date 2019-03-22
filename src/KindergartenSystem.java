@@ -9,15 +9,8 @@ public class KindergartenSystem {
         // Make a printstream object to write text to a file called "children.txt"
         PrintStream out = new PrintStream(new FileOutputStream("children.txt", true));
         PrintStream telephoneList = new PrintStream(new FileOutputStream("telephone list.txt", true));
-        FileReader fr1 = new FileReader("telephone list.txt");
-        BufferedReader br1 = new BufferedReader(fr1);
         PrintStream childList = new PrintStream(new FileOutputStream("Børne Liste.txt", true));
-        FileReader fr2 = new FileReader("Børne Liste.txt");
-        BufferedReader br2 = new BufferedReader(fr2);
 
-
-        String childUdskriv = null;
-        String tlfUdskriv = null;
         boolean running = true;
 
         // While loop, so that the program runs until the user stops it manually with "case 0"
